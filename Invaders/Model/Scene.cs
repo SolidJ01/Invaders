@@ -11,6 +11,8 @@ public class Scene
     
     private readonly AssetManager _assetManager;
     public AssetManager AssetManager { get => _assetManager; }
+
+    private readonly Action _exit;
     
     private readonly List<Entity> _entities;
     public List<Entity> Entities => _entities;
@@ -22,10 +24,11 @@ public class Scene
     
     private bool _loading;
 
-    public Scene(SceneLoader sceneLoader, AssetManager assetManager)
+    public Scene(SceneLoader sceneLoader, AssetManager assetManager, Action exit)
     {
         _sceneLoader = sceneLoader;
         _assetManager = assetManager;
+        _exit = exit;
         _entities = [];
         _spawnQueue = [];
         _despawnQueue = [];
@@ -66,6 +69,11 @@ public class Scene
     {
         _loading = true;
         CurrentScene = sceneName;
+    }
+
+    public void Exit()
+    {
+        _exit();
     }
 
     public bool TryFindEntitiesByTag(string tag, out List<Entity> entities)

@@ -29,6 +29,8 @@ public class UIMenuLogicComponent : EntityComponent, IUpdatableLogicComponent, I
 
     private readonly float _switchItemDelay;
     private float _currentSwitchItemDelay;
+
+    private bool _selectReleased;
     
     public UIMenuLogicComponent(List<MenuItem> items, Vector2D position, string font, uint fontSize, Entity entity, UIRenderableComponent.Alignment alignment = UIRenderableComponent.Alignment.Left, bool active = true) : base(entity)
     {
@@ -50,6 +52,8 @@ public class UIMenuLogicComponent : EntityComponent, IUpdatableLogicComponent, I
         
         _switchItemDelay = 0.25f;
         _currentSwitchItemDelay = 0;
+        
+        _selectReleased = false;
         
         for (int i = 0; i < _items.Count; i++)
         {
@@ -85,9 +89,14 @@ public class UIMenuLogicComponent : EntityComponent, IUpdatableLogicComponent, I
             _currentSwitchItemDelay = _switchItemDelay;
         }
 
-        if (_selectBinding.IsPressed)
+        if (_selectReleased && _selectBinding.IsPressed)
         {
             ActiveItem.Select(scene);
+        }
+
+        if (!_selectReleased && !_selectBinding.IsPressed)
+        {
+            _selectReleased = true;
         }
     }
 

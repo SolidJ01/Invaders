@@ -180,7 +180,7 @@ public class SceneLoader
             ui.AddComponent(new UIMenuLogicComponent(
                 [
                 new MenuItem("New Game", (scene) => { scene.QueueLoading("Level1"); }),
-                new MenuItem("Exit to Desktop", (scene) => {})
+                new MenuItem("Exit to Desktop", (scene) => { scene.Exit(); })
                 ],
                 new Vector2D(float.Parse(args?["x"]), float.Parse(args?["y"])), "pixel-font", 26, ui, UIRenderableComponent.Alignment.Center
             ));

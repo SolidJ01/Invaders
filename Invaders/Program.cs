@@ -17,7 +17,7 @@ using (var window = new RenderWindow(new VideoMode(1600, 900), "Invaders"))
 
     SceneLoader sceneLoader = new SceneLoader();
     AssetManager assetManager = new AssetManager();
-    Scene scene = new Scene(sceneLoader, assetManager);
+    Scene scene = new Scene(sceneLoader, assetManager, window.Close);
     scene.SceneLoader.LoadScene(scene, "MainMenu");
     
 
