@@ -12,4 +12,21 @@
       <PackageReference Include="SFML.Net" Version="2.5.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Assets\Shuttle.png" />
+      <None Remove="Assets\Bullet.png" />
+      <None Remove="Assets\Spritesheet.png" />
+      <EmbeddedResource Include="Assets\Spritesheet.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Assets\Level1.txt" />
+      <EmbeddedResource Include="Assets\Level1.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Assets\pixel-font.ttf" />
+      <EmbeddedResource Include="Assets\pixel-font.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+
 </Project>

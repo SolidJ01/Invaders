@@ -1,8 +1,9 @@
-﻿namespace Invaders.Model.Entity;
+﻿namespace Invaders.Model.Entities;
 
 public abstract class EntityComponent
 {
-    protected readonly Entity _this;
+    private readonly Entity _this;
+    public Entity Entity { get => _this; }
 
     protected EntityComponent(Entity entity)
     {
