@@ -29,8 +29,7 @@ public class UIRenderableComponent : EntityComponent,  IRenderableComponent, IIn
         _text.Font = scene.AssetManager.LoadFont(_font);
         _text.CharacterSize = _fontSize;
         _text.FillColor = new Color(71, 242, 83);
-        if (_position is not null)
-            SetPosition(_position);
+        SetPosition(_position);
     }
 
     public void SetText(string text)

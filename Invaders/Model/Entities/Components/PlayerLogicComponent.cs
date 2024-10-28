@@ -58,9 +58,11 @@ public class PlayerLogicComponent : EntityComponent,  IUpdatableLogicComponent, 
 
         if (velocityComponent is not null)
         {
-            velocityComponent.Velocity.Magnitude = MathF.Max(velocityComponent.Velocity.Magnitude - _deceleration * deltaTime, 0);
-            velocityComponent.Velocity += acceleration * deltaTime;
-            velocityComponent.Velocity.Magnitude = MathF.Min(velocityComponent.Velocity.Magnitude, _maxSpeed);
+            Vector2D velocity = velocityComponent.Velocity;
+            velocity.Magnitude = MathF.Max(velocity.Magnitude - _deceleration * deltaTime, 0);
+            velocity += acceleration * deltaTime;
+            velocity.Magnitude = MathF.Min(velocity.Magnitude, _maxSpeed);
+            velocityComponent.Velocity = velocity;
         }
 
         if (Entity.TryFindComponentsByType<WeaponComponent>(out var components))
@@ -115,7 +117,9 @@ public class PlayerLogicComponent : EntityComponent,  IUpdatableLogicComponent, 
             if (velocityComponent is not null)
             {
                 Entity.Position -= velocityComponent.Velocity * _lastDeltaTime;
-                velocityComponent.Velocity.Magnitude = 0;
+                Vector2D velocity = velocityComponent.Velocity;
+                velocity.Magnitude = 0;
+                velocityComponent.Velocity = velocity;
             }
         }
 

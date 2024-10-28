@@ -2,7 +2,7 @@
 
 namespace Invaders.System;
 
-public class Vector2D
+public struct Vector2D
 {
     private float _x, _y;
     public float X => _x;

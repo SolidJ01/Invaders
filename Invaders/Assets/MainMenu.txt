@@ -1,0 +1,7 @@
+﻿spawner xmin=32,xmax=1568,ymin=-100,ymax=-64,entity=enemy,maxspawned=10,basespawninterval=5,targetspawninterval=2.5,deltaspawninterval=-0.25
+wall x=-50,y=450,width=100,height=1028
+wall x=1650,y=450,width=100,height=1028
+wall x=800,y=-50,width=1600,height=100,nocollide=enemy
+wall x=800,y=950,width=1600,height=100,nocollide=enemy
+teleporter x=800,y=1014,width=1600,height=100,relative=true,targetx=0,targety=-1000
+mainmenuui x=800,y=450

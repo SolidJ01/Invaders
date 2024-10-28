@@ -27,6 +27,10 @@
       <EmbeddedResource Include="Assets\pixel-font.ttf">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
+      <None Remove="Assets\MainMenu.txt" />
+      <EmbeddedResource Include="Assets\MainMenu.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
     </ItemGroup>
 
 </Project>

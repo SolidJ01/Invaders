@@ -18,7 +18,7 @@ using (var window = new RenderWindow(new VideoMode(1600, 900), "Invaders"))
     SceneLoader sceneLoader = new SceneLoader();
     AssetManager assetManager = new AssetManager();
     Scene scene = new Scene(sceneLoader, assetManager);
-    scene.SceneLoader.LoadScene(scene, "Level1");
+    scene.SceneLoader.LoadScene(scene, "MainMenu");
     
 
     /*Entity debugPlayer = new Entity();

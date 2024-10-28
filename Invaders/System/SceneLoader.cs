@@ -37,7 +37,7 @@ public class SceneLoader
                         int.Parse(args?["spritewidth"]), int.Parse(args?["spriteheight"])), bullet, 0.4f, offsets));
             }
             else
-            bullet.AddComponent(new RenderableComponent("Spritesheet",
+                bullet.AddComponent(new RenderableComponent("Spritesheet",
                 new IntRect(int.Parse(args?["spritex"]), int.Parse(args?["spritey"]), int.Parse(args?["spritewidth"]),
                     int.Parse(args?["spriteheight"])), bullet));
             bullet.AddComponent(new VelocityComponent(bullet));
@@ -165,13 +165,25 @@ public class SceneLoader
             UIMenuLogicComponent uiLogic = new UIMenuLogicComponent(
                 [
                     new MenuItem("Restart", (scene) => { scene.QueueLoading(scene.CurrentScene); }),
-                    new MenuItem("Main menu", (scene) => { })
+                    new MenuItem("Main menu", (scene) => { scene.QueueLoading("MainMenu"); })
                 ],
                 new Vector2D(float.Parse(args?["x"]), float.Parse(args?["y"])), "pixel-font", 26, ui,
                 UIRenderableComponent.Alignment.Center, false
             );
             ui.AddComponent(new GameOverUILogicComponent(uiLogic, ui));
             ui.AddComponent(uiLogic);
+            return ui;
+        });
+        _entityLoaders.Add("mainmenuui", (args) =>
+        {
+            Entity ui = new Entity("mainmenuui", 5);
+            ui.AddComponent(new UIMenuLogicComponent(
+                [
+                new MenuItem("New Game", (scene) => { scene.QueueLoading("Level1"); }),
+                new MenuItem("Exit to Desktop", (scene) => {})
+                ],
+                new Vector2D(float.Parse(args?["x"]), float.Parse(args?["y"])), "pixel-font", 26, ui, UIRenderableComponent.Alignment.Center
+            ));
             return ui;
         });
     }
